@@ -8,6 +8,8 @@
 
 **🔗 [View Live Presentation](https://learn.playwithllm.com/)**
 
+[![Preview](images/preview.png)](https://learn.playwithllm.com/)
+
 ## 📖 About
 
 This presentation provides software engineers with a clear, structured understanding of Large Language Models (LLMs) and AI concepts. From foundational machine learning principles to production deployment concerns, it covers everything you need to know to work effectively with AI in modern applications.
