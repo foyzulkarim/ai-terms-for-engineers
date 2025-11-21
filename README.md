@@ -73,7 +73,7 @@ The presentation is organized into 7 logical sections:
 ## 🚀 Quick Start
 
 ### View Online
-Simply visit: **https://foyzulkarim.github.io/ai-terms-for-engineers/**
+Simply visit: **https://learn.playwithllm.com/**
 
 ### Run Locally
 1. Clone the repository
@@ -161,10 +161,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Foyzul Karim**
 
 - GitHub: [@foyzulkarim](https://github.com/foyzulkarim)
-- YouTube: [Foyzul Karim](https://www.youtube.com/@foyzulkarim) (20,000+ subscribers)
-- LinkedIn: [Foyzul Karim](https://www.linkedin.com/in/foyzulkarim/)
+- YouTube: [Foyzul Karim](https://www.youtube.com/@foyzul)
+- LinkedIn: [Foyzul Karim](https://www.linkedin.com/in/foyzul/)
+- Twitter: [@foyzul_karim](https://twitter.com/foyzul_karim)
 
-Senior Software Engineer at Mentorloop with 15+ years of experience specializing in Node.js, React, TypeScript, and cloud architectures.
+Senior Software Engineer (15+ Yrs) • Node.js, React, TypeScript, C# & AWS • Architecting High-Performance Scalable Systems • Innovating with Agentic AI
 
 ## 🌟 Acknowledgments
 
