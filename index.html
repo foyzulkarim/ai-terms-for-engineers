@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Terms for Software Engineers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/black.css">
+    <style>
+        :root {
+            --r-background-color: #0f1419;
+            --r-main-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --r-heading-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --r-main-color: #e6e6e6;
+            --r-heading-color: #ffffff;
+            --r-link-color: #42b883;
+            --r-link-color-hover: #35a372;
+            --accent-color: #42b883;
+            --secondary-color: #64b5f6;
+        }
+
+        .reveal {
+            font-size: 32px;
+        }
+
+        .reveal h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(66, 184, 131, 0.3);
+            margin-bottom: 0.5em;
+        }
+
+        .reveal h2 {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.8em;
+            text-shadow: 0 0 15px rgba(66, 184, 131, 0.2);
+        }
+
+        .reveal h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5em;
+        }
+
+        .reveal p, .reveal li {
+            line-height: 1.6;
+            margin-bottom: 0.8em;
+        }
+
+        .reveal ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .reveal li {
+            position: relative;
+            padding-left: 2em;
+            margin-bottom: 0.8em;
+        }
+
+        .reveal li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .reveal .slide-number {
+            background-color: rgba(66, 184, 131, 0.2);
+            color: var(--accent-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .reveal section {
+            text-align: left;
+            padding: 40px;
+        }
+
+        .reveal .title-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .reveal .title-slide h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #42b883 0%, #64b5f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3em;
+        }
+
+        .reveal .subtitle {
+            font-size: 1.3em;
+            color: #a0a0a0;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .reveal {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Title -->
+            <section class="title-slide">
+                <h1>AI Terms for<br>Software Engineers</h1>
+                <p class="subtitle">Essential Concepts for Working with<br>Large Language Models</p>
+            </section>
+
+            <!-- Slide 2: Machine Learning -->
+            <section>
+                <h2>Machine Learning: Teaching Computers to Learn from Data</h2>
+                <ul>
+                    <li class="fragment">Traditional programming: explicit instructions for every scenario</li>
+                    <li class="fragment">Machine learning: algorithms learn patterns from training data automatically</li>
+                    <li class="fragment">Neural networks: layers of interconnected nodes that mimic brain structure</li>
+                    <li class="fragment">Training process: adjust weights and biases to minimize prediction errors</li>
+                </ul>
+            </section>
+
+            <!-- Slide 3: Attention Is All You Need -->
+            <section>
+                <h2>"Attention Is All You Need"<br>Changed Everything (2017)</h2>
+                <ul>
+                    <li class="fragment">Breakthrough paper introduced Transformer architecture</li>
+                    <li class="fragment">Key innovation: attention mechanism replaces recurrence and convolutions</li>
+                    <li class="fragment">Encoder-decoder structure processes sequences in parallel</li>
+                    <li class="fragment">Foundation for modern LLMs: GPT, BERT, and beyond</li>
+                    <li class="fragment">Enabled massive scaling of language models</li>
+                </ul>
+            </section>
+
+            <!-- Slide 4: From Transformers to LLMs -->
+            <section>
+                <h2>From Transformers to<br>Large Language Models</h2>
+                <ul>
+                    <li class="fragment">LLMs: deep learning models pre-trained on massive text datasets</li>
+                    <li class="fragment">Self-supervised learning on billions of tokens</li>
+                    <li class="fragment">Capable of understanding and generating human-like text</li>
+                    <li class="fragment">Foundation models can be adapted for multiple tasks</li>
+                    <li class="fragment">Examples: GPT-4, Claude, Llama, Gemini</li>
+                </ul>
+            </section>
+
+            <!-- Slide 5: GPU Memory -->
+            <section>
+                <h2>Running LLMs Requires Significant GPU Memory (VRAM)</h2>
+                <ul>
+                    <li class="fragment">VRAM is the primary bottleneck for LLM deployment</li>
+                    <li class="fragment">Rule of thumb: model size in GB ≈ VRAM needed for inference</li>
+                    <li class="fragment">Training: ~16GB VRAM per billion parameters (full precision)</li>
+                    <li class="fragment">Consumer GPUs: 8-24GB (suitable for smaller models)</li>
+                    <li class="fragment">Enterprise GPUs: 40-80GB+ (NVIDIA H100, A100)</li>
+                    <li class="fragment">Quantization dramatically reduces requirements</li>
+                </ul>
+            </section>
+
+            <!-- Slide 6: Parameters -->
+            <section>
+                <h2>Parameters: The Model's Knowledge</h2>
+                <ul>
+                    <li class="fragment">Parameters = weights and biases in neural network layers</li>
+                    <li class="fragment">They encode all learned patterns from training data</li>
+                    <li class="fragment">Model size measured by parameter count (e.g., 7B, 70B, 175B)</li>
+                    <li class="fragment">More parameters = greater capacity for complex patterns</li>
+                    <li class="fragment">GPT-3: 175 billion parameters</li>
+                </ul>
+            </section>
+
+            <!-- Slide 7: Tokens -->
+            <section>
+                <h2>Tokens: The Language<br>of LLMs</h2>
+                <ul>
+                    <li class="fragment">Tokens: words, subwords, or character sequences</li>
+                    <li class="fragment">Tokenization breaks text into discrete units for processing</li>
+                    <li class="fragment">LLMs predict the next token in a sequence</li>
+                    <li class="fragment">Training data measured in tokens (trillions of tokens)</li>
+                    <li class="fragment">Different tokenizers: BPE, WordPiece, SentencePiece</li>
+                </ul>
+            </section>
+
+            <!-- Slide 8: Context Window -->
+            <section>
+                <h2>Context Window:<br>The Model's Working Memory</h2>
+                <ul>
+                    <li class="fragment">Context window: maximum tokens the model can process at once</li>
+                    <li class="fragment">Common sizes: 4K, 8K, 32K, 128K, 1M+ tokens (varies by model)</li>
+                    <li class="fragment">Includes both input prompt and generated output</li>
+                    <li class="fragment">Exceeding the limit requires chunking or summarization strategies</li>
+                    <li class="fragment">Affects application design and cost (longer context = higher cost)</li>
+                </ul>
+            </section>
+
+            <!-- Slide 9: Embeddings -->
+            <section>
+                <h2>Embeddings: Converting Text to Numerical Vectors</h2>
+                <ul>
+                    <li class="fragment">Numerical representations that capture semantic meaning</li>
+                    <li class="fragment">Similar concepts have similar vector representations</li>
+                    <li class="fragment">Vector databases: Pinecone, Weaviate, Chroma, FAISS</li>
+                    <li class="fragment">Enable semantic search and similarity matching</li>
+                    <li class="fragment">Foundation for building RAG systems</li>
+                </ul>
+            </section>
+
+            <!-- Slide 10: Quantization -->
+            <section>
+                <h2>Quantization: Shrinking Models Efficiently</h2>
+                <ul>
+                    <li class="fragment">Converts 32-bit/16-bit weights to 8-bit or 4-bit representations</li>
+                    <li class="fragment">8-bit quantization: 50% memory savings, &lt;1% accuracy loss</li>
+                    <li class="fragment">4-bit quantization: 75% memory savings, 2-5% accuracy drop</li>
+                    <li class="fragment">Enables running larger models on consumer hardware</li>
+                    <li class="fragment">Trade-off: memory efficiency vs. model quality</li>
+                </ul>
+            </section>
+
+            <!-- Slide 11: Fine-Tuning -->
+            <section>
+                <h2>Fine-Tuning: Specializing Pre-trained Models</h2>
+                <ul>
+                    <li class="fragment">Start with pre-trained foundation model</li>
+                    <li class="fragment">Further train on domain-specific dataset</li>
+                    <li class="fragment">Requires far less data and compute than training from scratch</li>
+                    <li class="fragment">Hundreds to thousands of examples often sufficient</li>
+                    <li class="fragment">Customizes model behavior for your application</li>
+                </ul>
+            </section>
+
+            <!-- Slide 12: RLHF -->
+            <section>
+                <h2>Reinforcement Learning from<br>Human Feedback (RLHF)</h2>
+                <ul>
+                    <li class="fragment">Humans provide feedback on model outputs</li>
+                    <li class="fragment">Reward model learns to score responses</li>
+                    <li class="fragment">LLM optimized using reinforcement learning</li>
+                    <li class="fragment">Critical for helpful, harmless, and honest AI</li>
+                </ul>
+            </section>
+
+            <!-- Slide 13: RAG -->
+            <section>
+                <h2>RAG Combines Retrieval with Generation for Accuracy</h2>
+                <ul>
+                    <li class="fragment">Retrieval-Augmented Generation (RAG): fetch relevant data before generating</li>
+                    <li class="fragment">Semantic search: understands intent, not just keywords</li>
+                    <li class="fragment">Uses vector embeddings to find conceptually similar content</li>
+                    <li class="fragment">Reduces hallucinations with grounded information</li>
+                    <li class="fragment">Enables up-to-date responses beyond training data</li>
+                </ul>
+            </section>
+
+            <!-- Slide 14: Vector Databases -->
+            <section>
+                <h2>Vector Databases: Storing and Searching Embeddings at Scale</h2>
+                <ul>
+                    <li class="fragment">Specialized databases optimized for vector similarity search</li>
+                    <li class="fragment">Popular options: Pinecone, Weaviate, Qdrant, Chroma, FAISS</li>
+                    <li class="fragment">Support for CRUD operations, metadata filtering, hybrid search</li>
+                    <li class="fragment">Essential infrastructure for RAG and semantic search applications</li>
+                    <li class="fragment">Choose based on scale, performance needs, and deployment model</li>
+                </ul>
+            </section>
+
+            <!-- Slide 15: Prompt Engineering -->
+            <section>
+                <h2>Prompt Engineering: Designing Effective Instructions</h2>
+                <ul>
+                    <li class="fragment">Crafting clear instructions to guide LLM outputs</li>
+                    <li class="fragment">Zero-shot: no examples, model uses general knowledge</li>
+                    <li class="fragment">Few-shot: provide 2-5 examples to guide response format</li>
+                    <li class="fragment">Chain-of-thought: ask model to "think step-by-step"</li>
+                    <li class="fragment">Critical skill for building LLM-powered applications</li>
+                </ul>
+            </section>
+
+            <!-- Slide 16: Inference Parameters -->
+            <section>
+                <h2>Inference Parameters: Controlling Output Quality and Creativity</h2>
+                <ul>
+                    <li class="fragment">Temperature: controls randomness (0 = deterministic, 1+ = creative)</li>
+                    <li class="fragment">Top-p (nucleus sampling): considers tokens with cumulative probability p</li>
+                    <li class="fragment">Top-k: limits selection to k most likely tokens</li>
+                    <li class="fragment">Higher temperature = more creative but less predictable</li>
+                    <li class="fragment">Adjust based on use case: factual (low temp) vs creative (high temp)</li>
+                </ul>
+            </section>
+
+            <!-- Slide 17: Function Calling -->
+            <section>
+                <h2>Function Calling: Extending LLMs<br>with External Tools</h2>
+                <ul>
+                    <li class="fragment">LLMs can call external functions/APIs based on user intent</li>
+                    <li class="fragment">Define function schemas, LLM decides when and how to call them</li>
+                    <li class="fragment">Enables actions: database queries, API calls, calculations</li>
+                    <li class="fragment">Supported by OpenAI, Anthropic (Claude), Google (Gemini)</li>
+                    <li class="fragment">Essential for building agentic and interactive applications</li>
+                </ul>
+            </section>
+
+            <!-- Slide 18: Agent Workflows -->
+            <section>
+                <h2>Agent Workflows: Autonomous AI Systems</h2>
+                <ul>
+                    <li class="fragment">Agentic AI: autonomous systems that reason, plan, and act</li>
+                    <li class="fragment">Multi-step workflows with tool use and decision-making</li>
+                    <li class="fragment">Can access external APIs, databases, and services</li>
+                    <li class="fragment">Iterate toward goals with minimal human intervention</li>
+                    <li class="fragment">Evolution from chatbots to autonomous assistants</li>
+                </ul>
+            </section>
+
+            <!-- Slide 19: Structured Output -->
+            <section>
+                <h2>Structured Output: Ensuring Reliable JSON and Data Formats</h2>
+                <ul>
+                    <li class="fragment">JSON mode: forces LLM to output valid JSON</li>
+                    <li class="fragment">Constrained generation: schema validation, type enforcement</li>
+                    <li class="fragment">Critical for parsing LLM responses programmatically</li>
+                    <li class="fragment">Reduces parsing errors and improves reliability</li>
+                    <li class="fragment">Supported natively by major API providers</li>
+                </ul>
+            </section>
+
+            <!-- Slide 20: Multi-modal Models -->
+            <section>
+                <h2>Multi-modal Models:<br>Beyond Text to Vision and Audio</h2>
+                <ul>
+                    <li class="fragment">Process multiple modalities: text, images, audio, video</li>
+                    <li class="fragment">Vision-language models: GPT-4V, Claude 3, Gemini Pro Vision</li>
+                    <li class="fragment">Use cases: image analysis, OCR, visual Q&A, document understanding</li>
+                    <li class="fragment">Audio models: Whisper (speech-to-text), voice synthesis</li>
+                    <li class="fragment">Expanding AI capabilities beyond pure text processing</li>
+                </ul>
+            </section>
+
+            <!-- Slide 21: LLM APIs -->
+            <section>
+                <h2>LLM APIs: Integrating AI<br>into Your Applications</h2>
+                <ul>
+                    <li class="fragment">Major providers: OpenAI, Anthropic, Google AI, AWS Bedrock</li>
+                    <li class="fragment">RESTful APIs with simple request/response structure</li>
+                    <li class="fragment">Pricing: typically per-token (input + output tokens)</li>
+                    <li class="fragment">Rate limiting and quota management required</li>
+                    <li class="fragment">Authentication via API keys, SDKs for major languages</li>
+                </ul>
+            </section>
+
+            <!-- Slide 22: Choosing the Right Model -->
+            <section>
+                <h2>Choosing the Right Model:<br>Balancing Cost, Speed, and Quality</h2>
+                <ul>
+                    <li class="fragment">Hosted APIs vs self-hosted: convenience vs control and cost</li>
+                    <li class="fragment">Model size trade-offs: larger = better quality, slower, more expensive</li>
+                    <li class="fragment">Latency considerations: smaller models for real-time applications</li>
+                    <li class="fragment">Specialized models: code (Codex), chat (ChatGPT), embeddings</li>
+                    <li class="fragment">Start with hosted APIs, self-host only when necessary</li>
+                </ul>
+            </section>
+
+            <!-- Slide 23: LLM Evaluation -->
+            <section>
+                <h2>LLM Evaluation:<br>Measuring Model Performance</h2>
+                <ul>
+                    <li class="fragment">Benchmarks: MMLU (knowledge), HumanEval (coding), HellaSwag (reasoning)</li>
+                    <li class="fragment">Leaderboards track model performance across tasks</li>
+                    <li class="fragment">Custom evaluation: define metrics for your specific use case</li>
+                    <li class="fragment">A/B testing for comparing prompts or models</li>
+                    <li class="fragment">Human evaluation often necessary for quality assessment</li>
+                </ul>
+            </section>
+
+            <!-- Slide 24: Hallucinations -->
+            <section>
+                <h2>Hallucinations: When LLMs Generate Plausible but False Information</h2>
+                <ul>
+                    <li class="fragment">LLMs can confidently generate incorrect or fabricated information</li>
+                    <li class="fragment">Caused by training data gaps, pattern matching without understanding</li>
+                    <li class="fragment">Mitigation: RAG, fact-checking, citations, temperature reduction</li>
+                    <li class="fragment">Critical for high-stakes applications (medical, legal, financial)</li>
+                    <li class="fragment">Always verify LLM outputs in production systems</li>
+                </ul>
+            </section>
+
+            <!-- Slide 25: Cost Optimization -->
+            <section>
+                <h2>Cost Optimization: Managing Token Usage and Expenses</h2>
+                <ul>
+                    <li class="fragment">Token counting: both input and output tokens are billed</li>
+                    <li class="fragment">Caching strategies: reuse embeddings, cache common prompts</li>
+                    <li class="fragment">Model selection: use smaller models when quality difference is minimal</li>
+                    <li class="fragment">Prompt optimization: be concise, avoid unnecessary context</li>
+                    <li class="fragment">Monitor usage and set budget alerts</li>
+                </ul>
+            </section>
+
+            <!-- Slide 26: Security -->
+            <section>
+                <h2>Security Considerations:<br>Protecting Against LLM Vulnerabilities</h2>
+                <ul>
+                    <li class="fragment">Prompt injection: malicious inputs that override instructions</li>
+                    <li class="fragment">PII handling: avoid sending sensitive data to external APIs</li>
+                    <li class="fragment">Content filtering: detect and block harmful outputs</li>
+                    <li class="fragment">Input validation: sanitize user inputs before sending to LLM</li>
+                    <li class="fragment">Implement guardrails and monitoring for production systems</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            console.log('Page loaded, initializing Reveal.js...');
+            console.log('Total sections found:', document.querySelectorAll('.slides section').length);
+            
+            Reveal.initialize({
+                hash: true,
+                slideNumber: true,
+                transition: 'slide',
+                backgroundTransition: 'fade',
+                controls: true,
+                progress: true,
+                center: false,
+                width: 1280,
+                height: 720,
+                margin: 0.04,
+                keyboard: true,
+                overview: true,
+                touch: true
+            }).then(() => {
+                console.log('Reveal.js initialized successfully');
+                console.log('Total slides:', Reveal.getTotalSlides());
+                console.log('Current slide:', Reveal.getIndices());
+            }).catch(err => {
+                console.error('Error initializing Reveal.js:', err);
+            });
+
+            // Add navigation event listener for debugging
+            Reveal.on('slidechanged', event => {
+                console.log('Changed to slide:', event.indexh, 'Total:', Reveal.getTotalSlides());
+            });
+        });
+    </script>
+</body>
+</html>
