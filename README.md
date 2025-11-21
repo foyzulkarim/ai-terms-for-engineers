@@ -6,7 +6,7 @@
 
 > A comprehensive, interactive presentation covering essential AI and LLM concepts for software engineers
 
-**🔗 [View Live Presentation](https://foyzulkarim.github.io/ai-terms-for-engineers/)**
+**🔗 [View Live Presentation](https://learn.playwithllm.com/)**
 
 ## 📖 About
 
