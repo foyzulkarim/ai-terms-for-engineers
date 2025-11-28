@@ -4,19 +4,97 @@ const fs = require('fs');
 const path = require('path');
 
 // ============================================================================
-// EDIT THIS SECTION TO ADD A NEW EPISODE
+// CONFIGURATION
 // ============================================================================
 
-const EPISODE = {
-  number: 0,  // Change this to your episode number
-  title: 'Episode Title Here',
-  youtubeUrl: 'https://youtu.be/xxxxx',
-  transcript: `Paste your transcript here...`
-};
+async function getEpisodeConfig() {
+  // Check if running in CI with VIDEO_URL
+  const videoUrl = process.env.VIDEO_URL;
+
+  if (videoUrl) {
+    // CI mode: fetch title from YouTube
+    console.log('🔍 Fetching video details from YouTube...\n');
+    const videoId = extractVideoId(videoUrl);
+    const videoDetails = await fetchVideoDetails(videoId);
+    const episodeNumber = determineNextEpisodeNumber();
+
+    return {
+      number: episodeNumber,
+      title: videoDetails.title,
+      youtubeUrl: videoUrl,
+      transcript: `Paste your transcript here...`
+    };
+  } else {
+    // Manual mode: use hardcoded values (for local testing)
+    return {
+      number: 0,  // Change this to your episode number
+      title: 'Episode Title Here',
+      youtubeUrl: 'https://youtu.be/xxxxx',
+      transcript: `Paste your transcript here...`
+    };
+  }
+}
 
 // ============================================================================
-// NO NEED TO EDIT BELOW THIS LINE
+// HELPER FUNCTIONS
 // ============================================================================
+
+function extractVideoId(url) {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/,
+    /youtube\.com\/embed\/([^&\s]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+
+  throw new Error('Invalid YouTube URL');
+}
+
+async function fetchVideoDetails(videoId) {
+  const response = await fetch(
+    `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch video details from YouTube');
+  }
+
+  const data = await response.json();
+
+  return {
+    title: data.title,
+    author: data.author_name,
+  };
+}
+
+function determineNextEpisodeNumber() {
+  const transcriptsDir = path.join(__dirname, 'transcripts');
+
+  // If transcripts directory doesn't exist, start at 1
+  if (!fs.existsSync(transcriptsDir)) {
+    return 1;
+  }
+
+  // Read all episode files
+  const files = fs.readdirSync(transcriptsDir)
+    .filter(file => file.startsWith('episode-') && file.endsWith('.md'));
+
+  if (files.length === 0) {
+    return 1;
+  }
+
+  // Extract episode numbers and find the max
+  const episodeNumbers = files.map(file => {
+    const match = file.match(/episode-(\d+)-/);
+    return match ? parseInt(match[1], 10) : 0;
+  });
+
+  const maxEpisodeNumber = Math.max(...episodeNumbers);
+  return maxEpisodeNumber + 1;
+}
 
 function slugify(text) {
   return text
@@ -111,22 +189,25 @@ function updateReadme(episode, filename) {
   }
 }
 
-function main() {
+async function main() {
   console.log('\n🚀 Adding Episode to Transcripts...\n');
+
+  // Get episode configuration (from CI or manual)
+  const EPISODE = await getEpisodeConfig();
 
   // Validate episode data
   if (!EPISODE.number || EPISODE.number === 0) {
-    console.error('❌ Error: Please set a valid episode number (1-26)');
+    console.error('❌ Error: Could not determine episode number');
     process.exit(1);
   }
 
-  if (EPISODE.number < 1 || EPISODE.number > 26) {
-    console.warn(`⚠️  Warning: Episode number ${EPISODE.number} is outside typical range (1-26)`);
+  if (EPISODE.number < 1 || EPISODE.number > 100) {
+    console.warn(`⚠️  Warning: Episode number ${EPISODE.number} is outside typical range (1-100)`);
     console.log('    Continuing anyway...\n');
   }
 
   if (!EPISODE.title || !EPISODE.youtubeUrl || !EPISODE.transcript) {
-    console.error('❌ Error: Please fill in all episode fields (title, youtubeUrl, transcript)');
+    console.error('❌ Error: Missing episode fields (title, youtubeUrl, or transcript)');
     process.exit(1);
   }
 
@@ -148,13 +229,24 @@ function main() {
   updateReadme(EPISODE, filename);
 
   console.log(`\n✨ Episode ${EPISODE.number} added successfully!\n`);
-  console.log('📝 Next steps:');
-  console.log('   1. Review the files:');
-  console.log('      - transcripts/' + filename);
-  console.log('      - transcripts/README.md');
-  console.log('   2. git add transcripts/');
-  console.log(`   3. git commit -m "docs: add transcript for episode ${EPISODE.number}"`);
-  console.log('   4. git push\n');
+
+  if (process.env.VIDEO_URL) {
+    console.log('📝 Next steps:');
+    console.log('   1. Review the PR that was created');
+    console.log('   2. Update the transcript in the episode file');
+    console.log('   3. Merge the PR\n');
+  } else {
+    console.log('📝 Next steps:');
+    console.log('   1. Review the files:');
+    console.log('      - transcripts/' + filename);
+    console.log('      - transcripts/README.md');
+    console.log('   2. git add transcripts/');
+    console.log(`   3. git commit -m "docs: add transcript for episode ${EPISODE.number}"`);
+    console.log('   4. git push\n');
+  }
 }
 
-main();
+main().catch(error => {
+  console.error('❌ Fatal error:', error.message);
+  process.exit(1);
+});
