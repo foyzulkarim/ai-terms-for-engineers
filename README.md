@@ -10,6 +10,23 @@
 
 [![Preview](images/preview.png)](https://learn.playwithllm.com/)
 
+## 📺 Video Series
+
+This presentation is now available as a comprehensive **26-episode video series** on YouTube! Each episode dives deep into one AI concept with practical examples and real-world applications.
+
+[![YouTube Series](images/youtube-thumbnail.png)](YOUR_YOUTUBE_PLAYLIST_URL)
+
+**[▶️ Watch the complete series on YouTube](YOUR_YOUTUBE_PLAYLIST_URL)**
+
+### 📝 Video Transcripts
+
+All video transcripts are available in the [`/transcripts`](transcripts/) directory. Read them as:
+- **Individual episodes** - Each transcript stands alone with examples and code
+- **Complete handbook** - Read all 26 episodes in sequence for comprehensive learning
+- **Quick reference** - Search for specific concepts across all transcripts
+
+[Browse all transcripts →](transcripts/README.md)
+
 ## 📖 About
 
 This presentation provides software engineers with a clear, structured understanding of Large Language Models (LLMs) and AI concepts. From foundational machine learning principles to production deployment concerns, it covers everything you need to know to work effectively with AI in modern applications.
@@ -142,7 +159,9 @@ Then visit `http://localhost:8000`
 
 ## 📝 Related Resources
 
-This presentation is based on the **"AI Terms for Software Engineers"** handbook, a comprehensive 45,000-word guide covering these concepts in depth.
+- **[Video Transcripts](transcripts/)** - Complete transcripts for all 26 episodes, readable as a handbook
+- **[YouTube Series](YOUR_YOUTUBE_PLAYLIST_URL)** - Video walkthroughs of each concept with examples
+- **[Live Presentation](https://learn.playwithllm.com/)** - Interactive slide deck for self-paced learning
 
 ## 🤝 Contributing
 
