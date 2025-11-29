@@ -39,6 +39,27 @@ async function getEpisodeConfig() {
 // HELPER FUNCTIONS
 // ============================================================================
 
+function checkForDuplicate(videoId) {
+  const transcriptsDir = path.join(__dirname, 'transcripts');
+  
+  // If transcripts directory doesn't exist, no duplicates possible
+  if (!fs.existsSync(transcriptsDir)) {
+    return null;
+  }
+
+  const files = fs.readdirSync(transcriptsDir)
+    .filter(file => file.startsWith('episode-') && file.endsWith('.md'));
+
+  for (const file of files) {
+    const content = fs.readFileSync(path.join(transcriptsDir, file), 'utf8');
+    if (content.includes(videoId)) {
+      return file;
+    }
+  }
+
+  return null;
+}
+
 function extractVideoId(url) {
   const patterns = [
     /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/,
@@ -199,6 +220,19 @@ async function main() {
   if (!EPISODE.number || EPISODE.number === 0) {
     console.error('❌ Error: Could not determine episode number');
     process.exit(1);
+  }
+
+  // Check for duplicate video URL
+  try {
+    const videoId = extractVideoId(EPISODE.youtubeUrl);
+    const existingFile = checkForDuplicate(videoId);
+    if (existingFile) {
+      console.error(`❌ Error: This video has already been added in ${existingFile}`);
+      process.exit(1);
+    }
+  } catch (error) {
+    // If it's an invalid URL, the validation below will catch it
+    // We don't need to handle it here
   }
 
   if (EPISODE.number < 1 || EPISODE.number > 100) {
