@@ -3,6 +3,7 @@
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://foyzulkarim.github.io/ai-terms-for-engineers/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Reveal.js](https://img.shields.io/badge/built%20with-reveal.js-orange)](https://revealjs.com/)
+[![pages-build-deployment](https://github.com/foyzulkarim/ai-terms-for-engineers/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/foyzulkarim/ai-terms-for-engineers/actions/workflows/pages/pages-build-deployment)
 
 > A comprehensive, interactive presentation covering essential AI and LLM concepts for software engineers
 
