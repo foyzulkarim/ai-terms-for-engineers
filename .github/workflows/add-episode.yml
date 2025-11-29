@@ -1,0 +1,43 @@
+name: Add YouTube Episode
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_url:
+        description: 'YouTube Video URL'
+        required: true
+        type: string
+
+jobs:
+  add-episode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run add-episode script
+        env:
+          VIDEO_URL: ${{ inputs.video_url }}
+        run: node add-episode.js
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'docs: add new episode transcript'
+          branch: add-episode-${{ github.run_number }}
+          title: 'Add New YouTube Episode'
+          body: |
+            Automatically generated PR for new YouTube video
+
+            **Video URL:** ${{ inputs.video_url }}
+
+            ⚠️ **Action Required:** Update the transcript in the episode file before merging.
+
+            ## Files Changed
+            - New episode markdown file in `transcripts/`
+            - Updated `transcripts/README.md`
+          delete-branch: true
